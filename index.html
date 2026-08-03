@@ -238,10 +238,10 @@ body {
 
 <!-- ═══════════ TABS ═══════════ -->
 <div class="tabs">
-  <div class="tab active" onclick="switchTab('overview')">🗺️ 行程总览</div>
-  <div class="tab" onclick="switchTab('daily')">📅 每日详情</div>
-  <div class="tab" onclick="switchTab('budget')">💰 预算清单</div>
-  <div class="tab" onclick="switchTab('tips')">📋 出行贴士</div>
+  <div class="tab active" data-tab="overview" onclick="switchTab('overview')">🗺️ 行程总览</div>
+  <div class="tab" data-tab="daily" onclick="switchTab('daily')">📅 每日详情</div>
+  <div class="tab" data-tab="budget" onclick="switchTab('budget')">💰 预算清单</div>
+  <div class="tab" data-tab="tips" onclick="switchTab('tips')">📋 出行贴士</div>
 </div>
 
 <!-- ═══════════════════════════════ -->
@@ -591,7 +591,7 @@ body {
 function switchTab(name) {
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-  document.querySelector('.tab[onclick="switchTab(\'" + name + "\')"]').classList.add('active');
+  document.querySelector('.tab[data-tab="' + name + '"]').classList.add('active');
   document.getElementById('tab-' + name).classList.add('active');
   window.location.hash = name;
 }
