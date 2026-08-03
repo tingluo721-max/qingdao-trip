@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>🌊 青岛 · 4天3晚亲子游</title>
+<title>🌊 青岛 · 5天4晚亲子游</title>
 <style>
 :root {
   --bg: #f0f4f8; --card: #fff; --text: #1a2a3a; --muted: #5a6c7d;
   --ocean: #1a6b8a; --teal: #0d9488; --sky: #3b82f6;
-  --sand: #d4a574; --red-roof: #c44536; --gold: #b7801f;
+  --gold: #b7801f; --red-roof: #c44536; --beer: #f59e0b;
   --border: #dce4ec;
 }
 * { margin:0; padding:0; box-sizing:border-box; }
@@ -19,24 +19,22 @@ body {
 }
 .container { max-width: 800px; margin: 0 auto; }
 
-/* Header */
 .header {
   background: linear-gradient(135deg, #0c4a6e, #1a6b8a, #0e7490);
   color: #fff; padding: 22px 20px 18px; border-radius: 18px; margin-bottom: 14px;
   position: relative; overflow: hidden;
 }
 .header::after {
-  content: '🏖️'; position: absolute; right: 16px; bottom: 8px; font-size: 48px; opacity: 0.2;
+  content: '🍺'; position: absolute; right: 16px; bottom: 6px; font-size: 50px; opacity: 0.15;
 }
 .header h1 { font-size: 22px; position: relative; z-index: 1; }
-.header .sub { opacity: 0.9; font-size: 13px; margin-top: 4px; position: relative; z-index: 1; }
-.header .meta-row { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; position: relative; z-index: 1; }
+.header .sub { opacity: 0.9; font-size: 12px; margin-top: 4px; position: relative; z-index: 1; }
+.header .meta-row { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; position: relative; z-index: 1; }
 .header .meta-row span {
   background: rgba(255,255,255,0.18); padding: 4px 12px;
   border-radius: 14px; font-size: 11px; font-weight: 600;
 }
 
-/* Hero Stats */
 .hero-stats {
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 14px;
 }
@@ -46,12 +44,9 @@ body {
 }
 .stat-card .sv { font-size: 22px; font-weight: 800; }
 .stat-card .sv.o { color: var(--ocean); } .stat-card .sv.t { color: var(--teal); }
-.stat-card .sv.s { color: var(--sky); } .stat-card .sv.r { color: var(--red-roof); }
+.stat-card .sv.b { color: var(--beer); } .stat-card .sv.r { color: var(--red-roof); }
 .stat-card .sl { font-size: 10px; color: var(--muted); margin-top: 2px; }
-
-@media (max-width: 500px) {
-  .hero-stats { grid-template-columns: repeat(2, 1fr); }
-}
+@media (max-width: 500px) { .hero-stats { grid-template-columns: repeat(2, 1fr); } }
 
 /* Tabs */
 .tabs {
@@ -64,30 +59,50 @@ body {
   font-size: 13px; font-weight: 700; white-space: nowrap;
   cursor: pointer; text-align: center; transition: all 0.2s; color: var(--text);
 }
-.tab.active {
-  background: linear-gradient(135deg, #0c4a6e, #1a6b8a);
-  color: #fff; border-color: #0c4a6e;
-}
+.tab.active { background: linear-gradient(135deg, #0c4a6e, #1a6b8a); color: #fff; border-color: #0c4a6e; }
 .tab-content { display: none; }
 .tab-content.active { display: block; }
 
 /* Cards */
 .card {
   background: var(--card); border-radius: 14px; padding: 16px 18px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04); border: 1px solid var(--border);
-  margin-bottom: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04); border: 1px solid var(--border); margin-bottom: 12px;
 }
-.card h3 {
-  font-size: 15px; margin-bottom: 10px; padding-bottom: 8px;
-  border-bottom: 2px solid var(--border);
-  display: flex; align-items: center; gap: 6px;
+.card h3 { font-size: 15px; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 2px solid var(--border); display: flex; align-items: center; gap: 6px; }
+
+/* Train cards */
+.train-card {
+  background: linear-gradient(135deg, #eff6ff, #f0f9ff);
+  border: 1.5px solid #bfdbfe; border-radius: 12px; padding: 14px 16px;
+  margin-bottom: 10px; display: flex; align-items: center; gap: 12px; overflow-x: auto;
 }
+.train-seg { text-align: center; flex-shrink: 0; }
+.train-seg .ts-city { font-weight: 800; font-size: 16px; }
+.train-seg .ts-time { font-size: 11px; color: var(--muted); }
+.train-seg .ts-station { font-size: 10px; color: var(--muted); }
+.train-arrow { font-size: 22px; color: var(--sky); flex-shrink: 0; }
+.train-info {
+  flex: 1; min-width: 0; text-align: center; font-size: 11px;
+  background: #fff; border-radius: 8px; padding: 8px 12px;
+}
+.train-info .ti-num { font-weight: 800; font-size: 15px; color: var(--ocean); }
+.train-info .ti-detail { color: var(--muted); margin-top: 2px; }
+
+/* Hotel row */
+.hotel-row {
+  display: flex; align-items: center; gap: 10px; padding: 10px 14px;
+  background: #fafdf8; border-radius: 10px; margin-bottom: 8px; font-size: 12px;
+  border: 1px solid #e8edf0; flex-wrap: wrap;
+}
+.hotel-row .hn { font-weight: 700; font-size: 13px; min-width: 140px; }
+.hotel-row .hd { color: var(--muted); flex: 1; }
+.hotel-row .ht { font-size: 10px; color: var(--ocean); font-weight: 600; white-space: nowrap; }
 
 /* Timeline */
 .timeline { position: relative; padding-left: 28px; }
 .timeline::before {
   content: ''; position: absolute; left: 10px; top: 4px; bottom: 4px;
-  width: 2.5px; background: linear-gradient(to bottom, var(--ocean), var(--teal), var(--sky), #f59e0b);
+  width: 2.5px; background: linear-gradient(to bottom, var(--ocean), var(--teal), var(--sky), var(--beer), #ef4444);
   border-radius: 2px;
 }
 .tl-block { margin-bottom: 14px; }
@@ -107,7 +122,7 @@ body {
 }
 .tl-card .tl-title { font-weight: 700; font-size: 13px; margin-bottom: 3px; }
 .tl-card .tl-detail { font-size: 12px; color: var(--muted); line-height: 1.7; }
-.tl-card .tl-tag {
+.tl-tag {
   display: inline-block; padding: 2px 8px; border-radius: 8px;
   font-size: 10px; font-weight: 600; margin-right: 4px;
 }
@@ -116,6 +131,8 @@ body {
 .tl-tag.view { background: #d1fae5; color: #065f46; }
 .tl-tag.transit { background: #fce7f3; color: #9d174d; }
 .tl-tag.rest { background: #e0e7ff; color: #3730a3; }
+.tl-tag.beer { background: #fef3c7; color: #b45309; }
+.tl-tag.hotel { background: #f3e8ff; color: #7c3aed; }
 
 /* Day cards */
 .day-card {
@@ -127,10 +144,11 @@ body {
   padding: 12px 16px; font-weight: 700; font-size: 15px; color: #fff;
   display: flex; justify-content: space-between; align-items: center;
 }
-.day-header.d1 { background: linear-gradient(135deg, #0c4a6e, #1a6b8a); }
-.day-header.d2 { background: linear-gradient(135deg, #0e7490, #0d9488); }
-.day-header.d3 { background: linear-gradient(135deg, #1a6b8a, #3b82f6); }
-.day-header.d4 { background: linear-gradient(135deg, #0d9488, #f59e0b); }
+.day-header.d1 { background: linear-gradient(135deg, #4338ca, #6366f1); }
+.day-header.d2 { background: linear-gradient(135deg, #0c4a6e, #1a6b8a); }
+.day-header.d3 { background: linear-gradient(135deg, #0e7490, #0d9488); }
+.day-header.d4 { background: linear-gradient(135deg, #b45309, #f59e0b); }
+.day-header.d5 { background: linear-gradient(135deg, #b91c1c, #ef4444); }
 .day-header .dt { font-size: 11px; opacity: 0.85; }
 .day-body { padding: 14px 16px; }
 .day-row {
@@ -138,57 +156,31 @@ body {
   align-items: flex-start; font-size: 12px;
 }
 .day-row:last-child { border-bottom: none; }
-.day-row .dr-time {
-  min-width: 72px; font-weight: 700; font-size: 11px; color: var(--ocean);
-  padding-top: 1px;
-}
+.day-row .dr-time { min-width: 74px; font-weight: 700; font-size: 11px; color: var(--ocean); padding-top: 1px; }
 .day-row .dr-content { flex: 1; line-height: 1.7; }
-.day-row .dr-content strong { color: var(--text); }
-
 .day-highlight {
   margin-top: 10px; padding: 10px 14px; background: #fefce8;
-  border-radius: 10px; border-left: 3px solid #f59e0b; font-size: 11px;
+  border-radius: 10px; border-left: 3px solid var(--beer); font-size: 11px;
   color: var(--muted); line-height: 1.7;
 }
 .day-highlight strong { color: #92400e; }
+.hotel-note {
+  margin-top: 8px; padding: 8px 14px; background: #f5f3ff;
+  border-radius: 10px; border-left: 3px solid #7c3aed; font-size: 11px;
+  color: var(--muted);
+}
 
-/* Train card */
-.train-card {
-  background: linear-gradient(135deg, #eff6ff, #f0f9ff);
-  border: 1.5px solid #bfdbfe; border-radius: 12px; padding: 14px 16px;
-  margin-bottom: 12px; display: flex; align-items: center; gap: 16px;
-  overflow-x: auto;
-}
-.train-seg { text-align: center; flex-shrink: 0; }
-.train-seg .ts-city { font-weight: 800; font-size: 16px; }
-.train-seg .ts-time { font-size: 11px; color: var(--muted); }
-.train-seg .ts-station { font-size: 10px; color: var(--muted); }
-.train-arrow { font-size: 20px; color: var(--sky); flex-shrink: 0; }
-.train-info {
-  flex: 1; min-width: 0; text-align: center; font-size: 11px;
-  background: #fff; border-radius: 8px; padding: 8px 12px;
-}
-.train-info .ti-num { font-weight: 800; font-size: 14px; color: var(--ocean); }
-.train-info .ti-detail { color: var(--muted); margin-top: 2px; }
-
-/* Budget table */
-.budget-table {
-  width: 100%; border-collapse: collapse; font-size: 12px;
-}
-.budget-table th {
-  background: #f0f7fa; padding: 6px 10px; text-align: left;
-  font-weight: 600; font-size: 10px; color: var(--muted);
-  letter-spacing: 0.04em;
-}
+/* Budget */
+.budget-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.budget-table th { background: #f0f7fa; padding: 6px 10px; text-align: left; font-weight: 600; font-size: 10px; color: var(--muted); letter-spacing: 0.04em; }
 .budget-table td { padding: 7px 10px; border-bottom: 1px solid #edf2f6; }
 .budget-table tr:last-child td { border-bottom: none; }
 .budget-table .bt-amount { text-align: right; font-weight: 600; white-space: nowrap; }
-.budget-table .bt-total td { font-size: 15px; font-weight: 800; color: var(--red-roof); border-top: 2px solid var(--border); }
+.budget-table .bt-total td { font-size: 16px; font-weight: 800; color: var(--red-roof); border-top: 2px solid var(--border); }
+.budget-table .bt-sub td { font-weight: 700; color: var(--ocean); border-top: 1px solid var(--border); }
 
 /* Tips */
-.tip-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
-}
+.tip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 @media (max-width: 500px) { .tip-grid { grid-template-columns: 1fr; } }
 .tip-card {
   background: var(--card); border-radius: 12px; padding: 14px;
@@ -197,30 +189,20 @@ body {
 .tip-card h4 { font-size: 13px; margin-bottom: 6px; }
 .tip-card p { font-size: 11px; color: var(--muted); line-height: 1.7; }
 
-/* Checklist */
 .checklist { list-style: none; padding: 0; }
-.checklist li {
-  padding: 7px 0; border-bottom: 1px solid #edf2f6;
-  font-size: 12px; display: flex; align-items: flex-start; gap: 8px;
-}
+.checklist li { padding: 7px 0; border-bottom: 1px solid #edf2f6; font-size: 12px; display: flex; align-items: flex-start; gap: 8px; }
 .checklist li:last-child { border-bottom: none; }
-.checklist .box {
-  width: 18px; height: 18px; border-radius: 4px;
-  border: 2px solid #cbd5e0; flex-shrink: 0; margin-top: 1px;
-}
+.checklist .box { width: 18px; height: 18px; border-radius: 4px; border: 2px solid #cbd5e0; flex-shrink: 0; margin-top: 1px; }
 
-/* Highlight box */
 .highlight-box {
   background: linear-gradient(135deg, #0c4a6e, #1a6b8a);
   color: #fff; border-radius: 14px; padding: 16px 18px; margin-bottom: 12px;
 }
 .highlight-box h3 { color: #a5f3fc; border-bottom-color: rgba(255,255,255,0.2); }
 
-/* Footer */
-.footer {
-  text-align: center; color: var(--muted); font-size: 10px; padding: 16px; margin-top: 4px;
-}
+.footer { text-align: center; color: var(--muted); font-size: 10px; padding: 16px; margin-top: 4px; }
 .tab { -webkit-tap-highlight-color: transparent; user-select: none; }
+
 @media print {
   body { background: #fff; padding: 0; }
   .tabs { display: none; }
@@ -235,22 +217,23 @@ body {
 
 <!-- ═══════════ HEADER ═══════════ -->
 <div class="header">
-  <h1>🌊 青岛 · 4天3晚亲子游</h1>
-  <div class="sub">北京⇄青岛高铁 · 两大一小（7岁） · 8月5日晚出发 · 沙滩海洋馆老城慢逛</div>
+  <h1>🌊 青岛 · 5天4晚亲子游</h1>
+  <div class="sub">两大一小（7岁）· 8月5日晚出发 → 8月9日晚到家 · 李村夜市 → 老城海岸 → 极地沙滩 → 🍺啤酒节收官</div>
   <div class="meta-row">
-    <span>📅 8/5（周三）→ 8/8（周六）</span>
+    <span>📅 8/5（周二）→ 8/9（周六）</span>
     <span>👨‍👩‍👦 2大1小</span>
-    <span>🚄 高铁往返</span>
-    <span>💰 预算 ≈ ¥6,000</span>
+    <span>🚄 G73/G892</span>
+    <span>🏨 3家酒店</span>
+    <span>🍺 啤酒节!</span>
   </div>
 </div>
 
 <!-- ═══════════ HERO STATS ═══════════ -->
 <div class="hero-stats">
-  <div class="stat-card"><div class="sv o">4天</div><div class="sl">行程</div></div>
-  <div class="stat-card"><div class="sv t">3晚</div><div class="sl">住宿</div></div>
-  <div class="stat-card"><div class="sv s">12+</div><div class="sl">景点</div></div>
-  <div class="stat-card"><div class="sv r">≈6k</div><div class="sl">预算</div></div>
+  <div class="stat-card"><div class="sv o">5天</div><div class="sl">行程</div></div>
+  <div class="stat-card"><div class="sv t">4晚</div><div class="sl">三区住宿</div></div>
+  <div class="stat-card"><div class="sv b">🍺</div><div class="sl">啤酒节8/15闭幕</div></div>
+  <div class="stat-card"><div class="sv r">≈7k</div><div class="sl">预算</div></div>
 </div>
 
 <!-- ═══════════ TABS ═══════════ -->
@@ -258,7 +241,7 @@ body {
   <div class="tab active" onclick="switchTab('overview')">🗺️ 行程总览</div>
   <div class="tab" onclick="switchTab('daily')">📅 每日详情</div>
   <div class="tab" onclick="switchTab('budget')">💰 预算清单</div>
-  <div class="tab" onclick="switchTab('tips')">📋 贴心提示</div>
+  <div class="tab" onclick="switchTab('tips')">📋 出行贴士</div>
 </div>
 
 <!-- ═══════════════════════════════ -->
@@ -266,99 +249,76 @@ body {
 <!-- ═══════════════════════════════ -->
 <div id="tab-overview" class="tab-content active">
 
-  <!-- Route Map -->
+  <!-- Trains -->
   <div class="card" style="text-align:center">
-    <h3 style="justify-content:center;border:none;margin-bottom:6px">🚄 大交通</h3>
-    <div class="train-card" style="margin-bottom:8px">
-      <div class="train-seg"><div class="ts-city">北京南</div><div class="ts-time">17:09</div><div class="ts-station">8月5日 周三</div></div>
+    <h3 style="justify-content:center;border:none;margin-bottom:6px">🚄 往返高铁</h3>
+    <div class="train-card">
+      <div class="train-seg"><div class="ts-city">北京南</div><div class="ts-time">17:56</div><div class="ts-station">8月5日 周二</div></div>
       <div class="train-arrow">→</div>
-      <div class="train-info"><div class="ti-num">G208 次</div><div class="ti-detail">约 3h49min · 二等座 ¥314/成人 ¥157/儿童</div></div>
+      <div class="train-info"><div class="ti-num">G73 次</div><div class="ti-detail">复兴号 · 约 3h7min · 二等座 ¥365/成人</div></div>
       <div class="train-arrow">→</div>
-      <div class="train-seg"><div class="ts-city">青岛站</div><div class="ts-time">20:58</div><div class="ts-station">市南区·市中心</div></div>
+      <div class="train-seg"><div class="ts-city">青岛北</div><div class="ts-time">21:03</div><div class="ts-station">李沧区</div></div>
     </div>
     <div class="train-card">
-      <div class="train-seg"><div class="ts-city">青岛站</div><div class="ts-time">14:30</div><div class="ts-station">8月8日 周六</div></div>
+      <div class="train-seg"><div class="ts-city">青岛北</div><div class="ts-time">18:57</div><div class="ts-station">8月9日 周六</div></div>
       <div class="train-arrow">→</div>
-      <div class="train-info"><div class="ti-num">G207 次</div><div class="ti-detail">约 3h42min · 二等座 ¥314/成人 ¥157/儿童</div></div>
+      <div class="train-info"><div class="ti-num">G892 次</div><div class="ti-detail">复兴号 · 约 3h21min · 二等座 ¥365/成人</div></div>
       <div class="train-arrow">→</div>
-      <div class="train-seg"><div class="ts-city">北京南</div><div class="ts-time">18:12</div><div class="ts-station">到家</div></div>
+      <div class="train-seg"><div class="ts-city">北京南</div><div class="ts-time">22:18</div><div class="ts-station">到家</div></div>
     </div>
-    <div style="font-size:10px;color:var(--muted);margin-top:6px">* 具体车次以实际购票为准，暑期建议提前3-5天购票</div>
   </div>
 
-  <!-- Summary -->
+  <!-- Hotels -->
   <div class="card">
-    <h3>🗺️ 四天速览</h3>
+    <h3>🏨 住宿安排</h3>
+    <div class="hotel-row"><div class="hn">🍊 桔子·李村步行街</div><div class="hd">李沧区 · 紧邻李村夜市 · 地铁3号线李村站</div><div class="ht">8/5 入住 → 8/6 退房</div></div>
+    <div class="hotel-row"><div class="hn">🏨 美居·五四广场</div><div class="hd">市南区核心 · 步行到五四广场看灯光秀 · 地铁2/3号线</div><div class="ht">8/6 入住 → 8/8 退房</div></div>
+    <div class="hotel-row"><div class="hn">🏨 全季·西海岸青大附院</div><div class="hd">黄岛区 · 地铁6号线 · 滴滴20min到金沙滩啤酒城</div><div class="ht">8/8 入住 → 8/9 退房</div></div>
+    <div style="font-size:10px;color:var(--muted);margin-top:8px">💡 三区住宿自然串起全城：北（李村夜市） → 中（老城海岸） → 南（西海岸沙滩啤酒节）</div>
+  </div>
+
+  <!-- Summary Timeline -->
+  <div class="card">
+    <h3>🗺️ 五天速览</h3>
     <div class="timeline">
       <div class="tl-block">
-        <div class="tl-time">Day 1 · 8/5 周三 · 抵达之夜</div>
-        <div class="tl-card">
-          <div class="tl-title">🚄 北京南→青岛站 → 🏨入住 → 🌃台东夜市</div>
-          <div class="tl-detail"><span class="tl-tag transit">高铁</span><span class="tl-tag food">夜市</span>晚9点到站，酒店放行李，台东步行街吃宵夜，感受青岛夜生活</div>
-        </div>
+        <div class="tl-time">Day 1 · 8/5 周二 · 抵达之夜</div>
+        <div class="tl-card"><div class="tl-title">🚄 G73 北京南→青岛北 → 🏨桔子李村 → 🌃李村夜市</div>
+        <div class="tl-detail"><span class="tl-tag transit">高铁</span><span class="tl-tag food">夜市</span><span class="tl-tag hotel">李村</span>21:03到站，地铁10分钟到李村，放下行李直奔夜市宵夜</div></div>
       </div>
       <div class="tl-block">
-        <div class="tl-time">Day 2 · 8/6 周四 · 老城海岸线</div>
-        <div class="tl-card">
-          <div class="tl-title">🏛️ 栈桥→天主教堂→信号山→八大关→🏖️海水浴场→🌃五四广场</div>
-          <div class="tl-detail"><span class="tl-tag view">经典</span><span class="tl-tag play">沙滩</span><span class="tl-tag food">海鲜</span>沿海老城一日，红瓦绿树碧海蓝天，晚上看灯光秀</div>
-        </div>
+        <div class="tl-time">Day 2 · 8/6 周三 · 老城海岸经典线</div>
+        <div class="tl-card"><div class="tl-title">🏛️ 栈桥→天主教堂→信号山→八大关→🏖️海水浴场→🌃五四广场灯光秀</div>
+        <div class="tl-detail"><span class="tl-tag view">经典</span><span class="tl-tag play">沙滩</span><span class="tl-tag hotel">美居五四广场</span>换酒店到市中心，沿海老城一日，晚上走路看灯光秀</div></div>
       </div>
       <div class="tl-block">
-        <div class="tl-time">Day 3 · 8/7 周五 · 海洋馆+沙滩</div>
-        <div class="tl-card">
-          <div class="tl-title">🐧 极地海洋世界→🏖️石老人沙滩→🌃台东夜市</div>
-          <div class="tl-detail"><span class="tl-tag play">孩子最爱</span><span class="tl-tag view">白鲸企鹅</span><span class="tl-tag food">大排档</span>海洋馆看半天，下午沙滩玩水玩沙，晚上逛吃</div>
-        </div>
+        <div class="tl-time">Day 3 · 8/7 周四 · 海洋馆+沙滩</div>
+        <div class="tl-card"><div class="tl-title">🐧 极地海洋世界→🏖️石老人沙滩→🍢台东夜市</div>
+        <div class="tl-detail"><span class="tl-tag play">孩子最爱</span><span class="tl-tag view">白鲸海豚</span><span class="tl-tag food">海鲜</span>海洋馆半天+沙滩半天，孩子最开心的一天</div></div>
       </div>
       <div class="tl-block">
-        <div class="tl-time">Day 4 · 8/8 周六 · 轻松收尾</div>
-        <div class="tl-card">
-          <div class="tl-title">⛰️ 崂山仰口（可选）或 🏘️ 小鱼山+大学路 → 🚄返京</div>
-          <div class="tl-detail"><span class="tl-tag view">山海</span><span class="tl-tag rest">轻松</span>上午轻松逛，下午高铁回家，傍晚到京</div>
-        </div>
+        <div class="tl-time">Day 4 · 8/8 周五 · 🍺 西海岸+啤酒节！</div>
+        <div class="tl-card"><div class="tl-title">🏖️金沙滩→🍺青岛国际啤酒节→🎆无人机+焰火秀</div>
+        <div class="tl-detail"><span class="tl-tag beer">啤酒节!</span><span class="tl-tag play">金沙滩</span><span class="tl-tag hotel">西海岸</span>搬到西海岸，下午沙滩，晚上啤酒节——8月15日闭幕前赶上!</div></div>
+      </div>
+      <div class="tl-block">
+        <div class="tl-time">Day 5 · 8/9 周六 · 轻松收尾→返京</div>
+        <div class="tl-card"><div class="tl-title">🌿唐岛湾/银沙滩 → 🍜午餐 → 🚄G892 青岛北→北京南</div>
+        <div class="tl-detail"><span class="tl-tag rest">轻松</span><span class="tl-tag transit">高铁</span>上午轻松逛，下午地铁回青岛北站，18:57出发，22:18到家</div></div>
       </div>
     </div>
   </div>
 
-  <!-- Kid-Friendly Rating -->
-  <div class="card">
-    <h3>👦 孩子友好度</h3>
-    <table style="width:100%;font-size:12px;border-collapse:collapse">
-      <tr style="border-bottom:1px solid var(--border)">
-        <td style="padding:6px 8px">🐧 极地海洋世界</td>
-        <td style="padding:6px 8px">白鲸·企鹅·海豚表演·海底隧道</td>
-        <td style="padding:6px 8px;text-align:right">⭐⭐⭐⭐⭐</td>
-      </tr>
-      <tr style="border-bottom:1px solid var(--border)">
-        <td style="padding:6px 8px">🏖️ 第二海水浴场 / 石老人</td>
-        <td style="padding:6px 8px">沙滩挖沙·浅滩踏浪</td>
-        <td style="padding:6px 8px;text-align:right">⭐⭐⭐⭐⭐</td>
-      </tr>
-      <tr style="border-bottom:1px solid var(--border)">
-        <td style="padding:6px 8px">🚃 栈桥·喂海鸥</td>
-        <td style="padding:6px 8px">海边长廊·看船（8月海鸥较少）</td>
-        <td style="padding:6px 8px;text-align:right">⭐⭐⭐⭐</td>
-      </tr>
-      <tr style="border-bottom:1px solid var(--border)">
-        <td style="padding:6px 8px">⛰️ 信号山旋转观景台</td>
-        <td style="padding:6px 8px">俯瞰红瓦绿树·不高·轻松</td>
-        <td style="padding:6px 8px;text-align:right">⭐⭐⭐⭐</td>
-      </tr>
-      <tr style="border-bottom:1px solid var(--border)">
-        <td style="padding:6px 8px">🏘️ 八大关漫步</td>
-        <td style="padding:6px 8px">林荫道·公主楼·适合拍照</td>
-        <td style="padding:6px 8px;text-align:right">⭐⭐⭐</td>
-      </tr>
-      <tr style="border-bottom:1px solid var(--border)">
-        <td style="padding:6px 8px">🌃 五四广场灯光秀</td>
-        <td style="padding:6px 8px">晚上看·视觉震撼</td>
-        <td style="padding:6px 8px;text-align:right">⭐⭐⭐⭐</td>
-      </tr>
-      <tr><td style="padding:6px 8px">⛰️ 崂山仰口</td>
-        <td style="padding:6px 8px">缆车·山洞·山海全景（量力而行）</td>
-        <td style="padding:6px 8px;text-align:right">⭐⭐⭐</td></tr>
-    </table>
+  <!-- Beer fest highlight -->
+  <div class="highlight-box">
+    <h3>🍺 Day 4 亮点：第36届青岛国际啤酒节</h3>
+    <p style="font-size:12px;opacity:0.9;line-height:1.8;margin-top:4px">
+      📍 <strong>西海岸金沙滩啤酒城</strong>（距全季酒店滴滴 20 分钟）<br>
+      🎫 <strong>免票入园</strong> · 10:00-24:00 · 持续至 8 月 15 日<br>
+      🎆 每晚 <strong>1500 架无人机编队</strong> + 两场海上焰火秀<br>
+      🍺 9 座啤酒大篷 · 2300+ 款国内外啤酒 · 200+ 美食摊位<br>
+      👦 孩子友好：沙滩市集小游戏、非酒精饮品充足、氛围热闹不嘈杂
+    </p>
   </div>
 
 </div>
@@ -370,88 +330,95 @@ body {
 
   <!-- Day 1 -->
   <div class="day-card">
-    <div class="day-header d1">
-      <div>🌙 Day 1 · 8月5日 周三</div>
-      <div class="dt">抵达之夜</div>
-    </div>
+    <div class="day-header d1"><div>🌙 Day 1 · 8月5日 周二</div><div class="dt">出发 + 李村夜市</div></div>
     <div class="day-body">
-      <div class="day-row"><div class="dr-time">17:09</div><div class="dr-content">🚄 <strong>北京南站出发</strong>，G208次高铁，沿途看窗外风景</div></div>
-      <div class="day-row"><div class="dr-time">20:58</div><div class="dr-content">🚄 <strong>抵达青岛站</strong>（市南区中心，德式老站房本身就是景点）</div></div>
-      <div class="day-row"><div class="dr-time">21:10</div><div class="dr-content">🚕 打车/滴滴到酒店（约10分钟），<strong>办理入住放行李</strong></div></div>
-      <div class="day-row"><div class="dr-time">21:30</div><div class="dr-content">🍢 <strong>台东步行街夜市</strong>——烤鱿鱼·臭豆腐·野馄饨·塑料袋打啤酒🍺</div></div>
-      <div class="day-row"><div class="dr-time">22:30</div><div class="dr-content">🏨 回酒店休息，为明天养精蓄锐</div></div>
-      <div class="day-highlight">
-        💡 <strong>Tips：</strong>青岛站就在海边，出站就能闻到海风。台东夜市开到凌晨，不用担心太晚没吃的。酒店建议订<strong>市南区</strong>（栈桥/五四广场附近），明早出门就是景点。
-      </div>
+      <div class="day-row"><div class="dr-time">17:00</div><div class="dr-content">🚕 出发前往<strong>北京南站</strong></div></div>
+      <div class="day-row"><div class="dr-time">17:56</div><div class="dr-content">🚄 <strong>G73 次</strong> 北京南→青岛北 · 复兴号 · 3h7min</div></div>
+      <div class="day-row"><div class="dr-time">21:03</div><div class="dr-content">🚄 <strong>抵达青岛北站</strong>（李沧区）</div></div>
+      <div class="day-row"><div class="dr-time">21:15</div><div class="dr-content">🚇 地铁 3 号线：青岛北站 → 李村站（2站，约10分钟）</div></div>
+      <div class="day-row"><div class="dr-time">21:25</div><div class="dr-content">🏨 <strong>桔子·李村步行街酒店</strong> 办理入住，放行李</div></div>
+      <div class="day-row"><div class="dr-time">21:40</div><div class="dr-content">🌃 <strong>李村夜市</strong>！—— 烤鱿鱼·野馄饨·臭豆腐·炒酸奶·鲜榨啤酒🍺。李村夜市是青岛三大夜市之一，本地人多，价格实惠</div></div>
+      <div class="day-row"><div class="dr-time">23:00</div><div class="dr-content">🏨 回酒店休息</div></div>
+      <div class="hotel-note">🏨 <strong>今晚住宿：桔子·青岛李村步行街酒店</strong> ｜ 李沧区 · 地铁李村站旁 · 下楼就是夜市</div>
     </div>
   </div>
 
   <!-- Day 2 -->
   <div class="day-card">
-    <div class="day-header d2">
-      <div>☀️ Day 2 · 8月6日 周四</div>
-      <div class="dt">老城海岸经典线</div>
-    </div>
+    <div class="day-header d2"><div>☀️ Day 2 · 8月6日 周三</div><div class="dt">老城海岸经典线</div></div>
     <div class="day-body">
-      <div class="day-row"><div class="dr-time">7:30</div><div class="dr-content">🥐 酒店早餐，或附近早餐店：<strong>甜沫+火烧</strong>（青岛特色）</div></div>
-      <div class="day-row"><div class="dr-time">8:30</div><div class="dr-content">🌊 <strong>栈桥</strong>（免费）—— 青岛地标，走回澜阁，看海看船。早上去人少不晒。</div></div>
-      <div class="day-row"><div class="dr-time">9:30</div><div class="dr-content">⛪ <strong>天主教堂</strong>（外观免费）—— 步行5分钟，中国唯一祝圣的天主教堂，拍照出片</div></div>
-      <div class="day-row"><div class="dr-time">10:15</div><div class="dr-content">🚶 <strong>老城区漫步</strong>—— 广西路·江苏路·德国总督府旧址，德式建筑群，红瓦黄墙</div></div>
-      <div class="day-row"><div class="dr-time">11:00</div><div class="dr-content">⛰️ <strong>信号山公园</strong>（¥15/成人）—— 爬10分钟到顶，旋转观景台360°看红瓦绿树碧海蓝天</div></div>
-      <div class="day-row"><div class="dr-time">12:15</div><div class="dr-content">🦐 <strong>午餐：劈柴院</strong>—— 百年小吃街，锅贴·海胆蒸蛋·烤海蛎子，或隔壁<strong>春和楼</strong>（老字号鲁菜）</div></div>
-      <div class="day-row"><div class="dr-time">13:30</div><div class="dr-content">🏘️ <strong>八大关</strong>（免费）—— 八条以关隘命名的林荫道，万国建筑博览。重点看花石楼（¥8.5）和公主楼</div></div>
-      <div class="day-row"><div class="dr-time">15:30</div><div class="dr-content">🏖️ <strong>第二海水浴场</strong>（免费/¥2）—— 就在八大关尽头！沙细水清，孩子挖沙踩浪 🪣</div></div>
-      <div class="day-row"><div class="dr-time">17:00</div><div class="dr-content">🏨 回酒店休整冲凉</div></div>
-      <div class="day-row"><div class="dr-time">18:30</div><div class="dr-content">🌃 <strong>五四广场+奥帆中心</strong>—— 看"五月的风"雕塑，情人坝散步，<strong>20:00灯光秀</strong>（沿海高楼联动画）</div></div>
-      <div class="day-row"><div class="dr-time">20:15</div><div class="dr-content">🍺 <strong>晚餐：闽江路/云霄路美食街</strong>—— 辣炒蛤蜊·鲅鱼水饺·原浆啤酒·海鲜大排档</div></div>
-      <div class="day-highlight">
-        💡 <strong>Tips：</strong>这条线全是步行+短途打车，不折腾。给孩子带<strong>挖沙玩具</strong>、遮阳帽、防晒霜。8月青岛也晒，中午注意防暑。信号山10分钟到顶，7岁孩子完全没问题。
-      </div>
+      <div class="day-row"><div class="dr-time">7:30</div><div class="dr-content">🥐 酒店早餐或附近早餐店</div></div>
+      <div class="day-row"><div class="dr-time">8:15</div><div class="dr-content">🏨 退房，行李寄存前台或直接带走</div></div>
+      <div class="day-row"><div class="dr-time">8:30</div><div class="dr-content">🚇 李村站→五四广场站（地铁3号线，约25分钟）</div></div>
+      <div class="day-row"><div class="dr-time">9:00</div><div class="dr-content">🏨 <strong>美居·五四广场酒店</strong> 寄存行李（或提前入住）</div></div>
+      <div class="day-row"><div class="dr-time">9:30</div><div class="dr-content">🌊 <strong>栈桥</strong>（免费）—— 青岛地标，走回澜阁，看海看船</div></div>
+      <div class="day-row"><div class="dr-time">10:30</div><div class="dr-content">⛪ <strong>天主教堂</strong>（外观免费）—— 步行5分钟，德式建筑，拍照出片</div></div>
+      <div class="day-row"><div class="dr-time">11:00</div><div class="dr-content">⛰️ <strong>信号山公园</strong>（¥15/成人）—— 旋转观景台360°俯瞰红瓦绿树碧海蓝天，孩子友好10分钟到顶</div></div>
+      <div class="day-row"><div class="dr-time">12:15</div><div class="dr-content">🦐 <strong>午餐：劈柴院</strong>（锅贴·海胆蒸蛋·烤海蛎子）或 <strong>春和楼</strong>（老字号鲁菜）</div></div>
+      <div class="day-row"><div class="dr-time">13:30</div><div class="dr-content">🏘️ <strong>八大关</strong>（免费）—— 林荫道万国建筑，花石楼（¥8.5）</div></div>
+      <div class="day-row"><div class="dr-time">15:30</div><div class="dr-content">🏖️ <strong>第二海水浴场</strong>（¥2）—— 八大关尽头，沙细水清，孩子挖沙踏浪 🪣</div></div>
+      <div class="day-row"><div class="dr-time">17:00</div><div class="dr-content">🏨 回美居休整冲凉</div></div>
+      <div class="day-row"><div class="dr-time">18:30</div><div class="dr-content">🌃 <strong>五四广场+奥帆中心</strong>—— 步行就到！看"五月的风"，情人坝散步</div></div>
+      <div class="day-row"><div class="dr-time">20:00</div><div class="dr-content">🎆 <strong>沿海灯光秀</strong>—— 不需赶路，从酒店溜达着看</div></div>
+      <div class="day-row"><div class="dr-time">20:30</div><div class="dr-content">🍺 <strong>闽江路/云霄路美食街</strong>—— 辣炒蛤蜊·鲅鱼水饺·原浆啤酒，从酒店步行可达</div></div>
+      <div class="hotel-note">🏨 <strong>今晚住宿：美居·五四广场酒店</strong> ｜ 市南区核心 · 灯光秀走路看 · 美食街步行可达</div>
     </div>
   </div>
 
   <!-- Day 3 -->
   <div class="day-card">
-    <div class="day-header d3">
-      <div>🐧 Day 3 · 8月7日 周五</div>
-      <div class="dt">海洋馆+沙滩日</div>
-    </div>
+    <div class="day-header d3"><div>🐧 Day 3 · 8月7日 周四</div><div class="dt">海洋馆 + 沙滩日</div></div>
     <div class="day-body">
       <div class="day-row"><div class="dr-time">7:30</div><div class="dr-content">🥐 酒店早餐</div></div>
-      <div class="day-row"><div class="dr-time">8:30</div><div class="dr-content">🚕 打车前往<strong>青岛极地海洋世界</strong>（约20分钟）</div></div>
-      <div class="day-row"><div class="dr-time">9:00</div><div class="dr-content">🐧 <strong>极地海洋世界</strong>（¥210/成人 ¥105/儿童）—— <strong>必看：</strong>白鲸水下秀→企鹅馆→海底隧道→海豚表演（10:30场）→极地动物喂食。预留3-3.5小时</div></div>
-      <div class="day-row"><div class="dr-time">12:30</div><div class="dr-content">🍜 <strong>午餐</strong>：极地附近商场或石老人附近餐厅</div></div>
-      <div class="day-row"><div class="dr-time">13:30</div><div class="dr-content">🏖️ <strong>石老人海水浴场</strong>（免费）—— 青岛最大最好的沙滩！浪小沙细，浅滩宽阔，孩子玩水挖沙的天堂。带上帐篷/地垫，玩到尽兴 🏄</div></div>
-      <div class="day-row"><div class="dr-time">16:30</div><div class="dr-content">🏨 回酒店冲洗休息</div></div>
-      <div class="day-row"><div class="dr-time">18:00</div><div class="dr-content">🍢 <strong>台东步行街夜市</strong> —— 青岛最大夜市！烤海鲜·锅包肉·炒酸奶·章鱼小丸子，孩子大人各取所需</div></div>
-      <div class="day-row"><div class="dr-time">20:00</div><div class="dr-content">🍺 附近找一家<strong>海鲜大排档</strong>，大人喝原浆啤酒，孩子吃烤鱼片</div></div>
-      <div class="day-highlight">
-        💡 <strong>Tips：</strong>极地海洋世界暑期人多，<strong>提前一天网上购票</strong>（携程/美团），比现场便宜且不用排队。海豚表演提前20分钟占座。沙滩带<strong>大浴巾+备用衣物+防水袋</strong>（装手机）。
-      </div>
+      <div class="day-row"><div class="dr-time">8:30</div><div class="dr-content">🚕 滴滴前往<strong>青岛极地海洋世界</strong>（约20-25分钟）</div></div>
+      <div class="day-row"><div class="dr-time">9:00</div><div class="dr-content">🐧 <strong>极地海洋世界</strong>（¥210/成人 ¥105/儿童）—— <strong>必看：</strong>白鲸水下秀→企鹅馆→海底隧道→海豚表演（10:30场）。预留3-3.5h</div></div>
+      <div class="day-row"><div class="dr-time">12:30</div><div class="dr-content">🍜 <strong>午餐</strong>：极地附近商场或石老人方向餐厅</div></div>
+      <div class="day-row"><div class="dr-time">13:30</div><div class="dr-content">🏖️ <strong>石老人海水浴场</strong>（免费）—— 青岛最大最好的沙滩！浪小沙细，浅滩宽阔，带帐篷/地垫玩到尽兴 🏄</div></div>
+      <div class="day-row"><div class="dr-time">16:30</div><div class="dr-content">🏨 回美居冲洗休息</div></div>
+      <div class="day-row"><div class="dr-time">18:00</div><div class="dr-content">🍢 <strong>台东步行街夜市</strong>—— 青岛最大夜市！烤海鲜·锅包肉·炒酸奶·章鱼小丸子</div></div>
+      <div class="day-row"><div class="dr-time">20:00</div><div class="dr-content">🍺 附近海鲜大排档，大人啤酒，孩子烤鱼片</div></div>
+      <div class="hotel-note">🏨 <strong>今晚住宿：美居·五四广场酒店</strong>（续住第二晚） ｜ 💡 极地海洋世界提前一天携程/美团购票</div>
     </div>
   </div>
 
   <!-- Day 4 -->
   <div class="day-card">
-    <div class="day-header d4">
-      <div>👋 Day 4 · 8月8日 周六</div>
-      <div class="dt">轻松收尾·返京</div>
-    </div>
+    <div class="day-header d4"><div>🍺 Day 4 · 8月8日 周五</div><div class="dt">西海岸 + 啤酒节！</div></div>
     <div class="day-body">
-      <div class="day-row"><div class="dr-time">7:30</div><div class="dr-content">🥐 酒店早餐，退房寄存行李</div></div>
-      <div class="day-row"><div class="dr-time">8:30</div><div class="dr-content">
-        <strong>方案A（体力好）：⛰️ 崂山仰口景区</strong><br>
-        打车40分钟 → 缆车上山（¥35）→ 觅天洞（有趣山洞）→ 天苑（山顶海景）→ 下山。约3小时，12点返回市区。<br><br>
-        <strong>方案B（轻松收尾）：🏘️ 小鱼山+大学路</strong><br>
-        小鱼山公园（¥10，3分钟登顶，海景不输信号山）→ 大学路网红墙打卡 → 第一海水浴场再踩踩沙。轻松惬意。
-      </div></div>
-      <div class="day-row"><div class="dr-time">12:00</div><div class="dr-content">🦐 <strong>最后一顿海鲜午餐</strong>—— 推荐<strong>船歌鱼水饺</strong>（墨鱼水饺·黄花鱼水饺，孩子友好）或酒店附近餐厅</div></div>
-      <div class="day-row"><div class="dr-time">13:30</div><div class="dr-content">🚕 前往青岛站，取行李候车</div></div>
-      <div class="day-row"><div class="dr-time">14:30</div><div class="dr-content">🚄 <strong>G207次 青岛站→北京南</strong>，孩子车上睡觉</div></div>
-      <div class="day-row"><div class="dr-time">18:12</div><div class="dr-content">🏠 <strong>抵达北京南站</strong>，回家～</div></div>
+      <div class="day-row"><div class="dr-time">7:30</div><div class="dr-content">🥐 酒店早餐，退房</div></div>
+      <div class="day-row"><div class="dr-time">8:30</div><div class="dr-content">🚕 <strong>前往西海岸</strong>：滴滴穿海底隧道约40-50分钟（¥60-80），或地铁3号线→青岛站换1号线过海→换6号线到青大附院站（约70分钟）</div></div>
+      <div class="day-row"><div class="dr-time">9:30</div><div class="dr-content">🏨 <strong>全季·西海岸青大附院地铁站</strong> 寄存行李</div></div>
+      <div class="day-row"><div class="dr-time">10:00</div><div class="dr-content">🏖️ <strong>金沙滩</strong>（免费）—— 青岛最好的沙滩！沙质金黄细腻远超市区浴场，海岸线长，浅滩宽阔。带足沙滩玩具 🪣</div></div>
+      <div class="day-row"><div class="dr-time">12:30</div><div class="dr-content">🍜 <strong>午餐</strong>：金沙滩附近海鲜餐厅 or 啤酒城内美食摊位</div></div>
+      <div class="day-row"><div class="dr-time">14:00</div><div class="dr-content">🏨 回酒店休整、冲凉、午休（避开最晒时段）</div></div>
+      <div class="day-row"><div class="dr-time">16:00</div><div class="dr-content">🍺 <strong>第36届青岛国际啤酒节 · 金沙滩啤酒城</strong>！免票入园。先逛沙滩市集（200+摊位），找好位置</div></div>
+      <div class="day-row"><div class="dr-time">18:00</div><div class="dr-content">🍻 啤酒大篷开喝！9座大篷各有主题——青岛啤酒1903、德国沃斯坦、荷兰喜力、丹麦嘉士伯……2300+款啤酒。孩子喝果汁/酸奶，大人品原浆 🍺</div></div>
+      <div class="day-row"><div class="dr-time">19:00</div><div class="dr-content">🎉 <strong>北门迎宾仪式</strong>——"青岛与世界干杯"雕塑前盛大开启</div></div>
+      <div class="day-row"><div class="dr-time">20:00</div><div class="dr-content">🎆 <strong>1500架无人机编队表演 + 海上焰火秀</strong>（每晚两场）+ 裸眼3D + 巨型机械凤凰飞行</div></div>
+      <div class="day-row"><div class="dr-time">21:30</div><div class="dr-content">🚕 滴滴回酒店（约20分钟，啤酒节期间可能有"微醺巴士"免费接驳）</div></div>
       <div class="day-highlight">
-        💡 <strong>Tips：</strong>带娃建议<strong>方案B</strong>，不赶不累。崂山可以下次专门来爬一天。暑期高铁票紧张，<strong>出发前就买好往返票</strong>，别等到青岛再买。
+        🍺 <strong>啤酒节 Tips：</strong>8月15日闭幕，我们正好赶上收官阶段！免票入园，安检后直接进。建议<strong>不要开车</strong>（园区周边拥堵+喝了酒），滴滴或免费接驳巴士最方便。孩子可以逛沙滩市集、看无人机表演，不会无聊。
       </div>
+      <div class="hotel-note">🏨 <strong>今晚住宿：全季·西海岸青大附院地铁站</strong> ｜ 黄岛区 · 滴滴20min到金沙滩 · 地铁6号线</div>
+    </div>
+  </div>
+
+  <!-- Day 5 -->
+  <div class="day-card">
+    <div class="day-header d5"><div>👋 Day 5 · 8月9日 周六</div><div class="dt">轻松收尾 · 返京</div></div>
+    <div class="day-body">
+      <div class="day-row"><div class="dr-time">8:00</div><div class="dr-content">🥐 酒店早餐，退房寄存行李</div></div>
+      <div class="day-row"><div class="dr-time">9:00</div><div class="dr-content">🌿 <strong>唐岛湾滨海公园</strong>（免费）—— 距酒店不远，人少清静，湿地+海岸步道，骑双人自行车沿海骑行很惬意。或去<strong>银沙滩</strong>最后踩踩沙</div></div>
+      <div class="day-row"><div class="dr-time">11:30</div><div class="dr-content">🍜 <strong>午餐</strong>：西海岸本地海鲜餐厅，最后一顿青岛海鲜</div></div>
+      <div class="day-row"><div class="dr-time">13:00</div><div class="dr-content">🏨 回酒店取行李</div></div>
+      <div class="day-row"><div class="dr-time">14:30</div><div class="dr-content">🚇 <strong>出发去青岛北站</strong>：地铁6号线→换1号线→青岛北站（约70-80分钟），或滴滴约50分钟。预留充足时间！</div></div>
+      <div class="day-row"><div class="dr-time">16:30</div><div class="dr-content">📌 <strong>抵达青岛北站</strong>，候车、买点零食车上吃</div></div>
+      <div class="day-row"><div class="dr-time">18:57</div><div class="dr-content">🚄 <strong>G892 次</strong> 青岛北→北京南 · 复兴号 · 3h21min</div></div>
+      <div class="day-row"><div class="dr-time">22:18</div><div class="dr-content">🏠 <strong>抵达北京南站</strong>，回家～🎉</div></div>
+      <div class="day-highlight">
+        💡 <strong>Tips：</strong>西海岸到青岛北站距离较远，<strong>地铁留足80分钟</strong>（6号线→1号线），或<strong>滴滴约50分钟</strong>（¥80-100）。14:30前出发最稳妥。高铁上给孩子带点零食+iPad，3个多小时很快过去。
+      </div>
+      <div class="hotel-note">🏨 今日无住宿 ｜ 🏠 22:18 到家</div>
     </div>
   </div>
 
@@ -462,63 +429,56 @@ body {
 <!-- ═══════════════════════════════ -->
 <div id="tab-budget" class="tab-content">
 
-  <div class="card">
-    <h3>🚄 大交通 · 高铁</h3>
-    <table class="budget-table">
-      <tr><th>项目</th><th>单价</th><th>数量</th><th class="bt-amount">金额</th></tr>
-      <tr><td>北京南→青岛 二等座（成人）</td><td>¥314</td><td>×2</td><td class="bt-amount">¥628</td></tr>
-      <tr><td>北京南→青岛 二等座（儿童）</td><td>¥157</td><td>×1</td><td class="bt-amount">¥157</td></tr>
-      <tr><td>青岛→北京南 二等座（成人）</td><td>¥314</td><td>×2</td><td class="bt-amount">¥628</td></tr>
-      <tr><td>青岛→北京南 二等座（儿童）</td><td>¥157</td><td>×1</td><td class="bt-amount">¥157</td></tr>
-      <tr class="bt-total"><td colspan="3">🚄 高铁小计</td><td class="bt-amount">¥1,570</td></tr>
-    </table>
-  </div>
+  <div class="card"><h3>🚄 高铁</h3>
+  <table class="budget-table">
+    <tr><th>项目</th><th>单价</th><th>数量</th><th class="bt-amount">金额</th></tr>
+    <tr><td>G73 北京南→青岛北 成人</td><td>¥365</td><td>×2</td><td class="bt-amount">¥730</td></tr>
+    <tr><td>G73 儿童票</td><td>≈¥183</td><td>×1</td><td class="bt-amount">¥183</td></tr>
+    <tr><td>G892 青岛北→北京南 成人</td><td>¥365</td><td>×2</td><td class="bt-amount">¥730</td></tr>
+    <tr><td>G892 儿童票</td><td>≈¥183</td><td>×1</td><td class="bt-amount">¥183</td></tr>
+    <tr class="bt-sub"><td colspan="3">🚄 高铁小计</td><td class="bt-amount">¥1,826</td></tr>
+  </table></div>
 
-  <div class="card">
-    <h3>🏨 住宿 · 3晚</h3>
-    <table class="budget-table">
-      <tr><th>项目</th><th>单价</th><th>数量</th><th class="bt-amount">金额</th></tr>
-      <tr><td>市南区中档酒店/公寓（大床房+加床）</td><td>≈¥450-550/晚</td><td>×3</td><td class="bt-amount">¥1,350-1,650</td></tr>
-      <tr style="color:var(--muted);font-size:11px"><td colspan="4">推荐区域：栈桥/五四广场/八大关周边，出行方便。暑期建议提前预订</td></tr>
-      <tr class="bt-total"><td colspan="3">🏨 住宿小计（取中）</td><td class="bt-amount">¥1,500</td></tr>
-    </table>
-  </div>
+  <div class="card"><h3>🏨 住宿 · 4晚</h3>
+  <table class="budget-table">
+    <tr><th>酒店</th><th>日期</th><th>估算</th><th class="bt-amount">金额</th></tr>
+    <tr><td>桔子·李村步行街</td><td>8/5（1晚）</td><td>≈¥350-450</td><td class="bt-amount">¥400</td></tr>
+    <tr><td>美居·五四广场</td><td>8/6-8/7（2晚）</td><td>≈¥500-650/晚</td><td class="bt-amount">¥1,100</td></tr>
+    <tr><td>全季·西海岸青大附院</td><td>8/8（1晚）</td><td>≈¥350-450</td><td class="bt-amount">¥400</td></tr>
+    <tr class="bt-sub"><td colspan="3">🏨 住宿小计</td><td class="bt-amount">¥1,900</td></tr>
+  </table></div>
 
-  <div class="card">
-    <h3>🎫 门票 & 玩乐</h3>
-    <table class="budget-table">
-      <tr><th>项目</th><th>单价</th><th>数量</th><th class="bt-amount">金额</th></tr>
-      <tr><td>极地海洋世界（成人）</td><td>¥210</td><td>×2</td><td class="bt-amount">¥420</td></tr>
-      <tr><td>极地海洋世界（儿童）</td><td>¥105</td><td>×1</td><td class="bt-amount">¥105</td></tr>
-      <tr><td>信号山公园（成人）</td><td>¥15</td><td>×2</td><td class="bt-amount">¥30</td></tr>
-      <tr><td>花石楼</td><td>¥8.5</td><td>×2</td><td class="bt-amount">¥17</td></tr>
-      <tr><td>崂山仰口 or 小鱼山（备用）</td><td>≈¥50/人</td><td>×2</td><td class="bt-amount">¥100</td></tr>
-      <tr><td>栈桥/天主教堂/八大关/海水浴场/五四广场</td><td>免费</td><td>—</td><td class="bt-amount">¥0</td></tr>
-      <tr class="bt-total"><td colspan="3">🎫 门票小计</td><td class="bt-amount">¥672</td></tr>
-    </table>
-  </div>
+  <div class="card"><h3>🎫 门票 & 玩乐</h3>
+  <table class="budget-table">
+    <tr><th>项目</th><th>单价</th><th>数量</th><th class="bt-amount">金额</th></tr>
+    <tr><td>极地海洋世界 成人</td><td>¥210</td><td>×2</td><td class="bt-amount">¥420</td></tr>
+    <tr><td>极地海洋世界 儿童</td><td>¥105</td><td>×1</td><td class="bt-amount">¥105</td></tr>
+    <tr><td>信号山公园</td><td>¥15</td><td>×2</td><td class="bt-amount">¥30</td></tr>
+    <tr><td>花石楼</td><td>¥8.5</td><td>×2</td><td class="bt-amount">¥17</td></tr>
+    <tr><td>啤酒节</td><td>免费</td><td>—</td><td class="bt-amount">¥0</td></tr>
+    <tr><td>栈桥/八大关/浴场/五四广场/唐岛湾</td><td>免费</td><td>—</td><td class="bt-amount">¥0</td></tr>
+    <tr class="bt-sub"><td colspan="3">🎫 门票小计</td><td class="bt-amount">¥572</td></tr>
+  </table></div>
 
-  <div class="card">
-    <h3>🍽️ 餐饮 & 🚕 市内交通 & 其他</h3>
-    <table class="budget-table">
-      <tr><th>项目</th><th>预算</th><th>数量</th><th class="bt-amount">金额</th></tr>
-      <tr><td>正餐+小吃（海鲜/夜市/简餐）</td><td>≈¥350/天</td><td>×4</td><td class="bt-amount">¥1,400</td></tr>
-      <tr><td>市内打车/滴滴</td><td>≈¥80/天</td><td>×4</td><td class="bt-amount">¥320</td></tr>
-      <tr><td>沙滩玩具/零食/纪念品</td><td>—</td><td>—</td><td class="bt-amount">¥200</td></tr>
-      <tr class="bt-total"><td colspan="3">🍽️🚕 小计</td><td class="bt-amount">¥1,920</td></tr>
-    </table>
-  </div>
+  <div class="card"><h3>🍽️ 餐饮 & 🚕 交通 & 其他</h3>
+  <table class="budget-table">
+    <tr><th>项目</th><th>预算</th><th>天数</th><th class="bt-amount">金额</th></tr>
+    <tr><td>正餐+夜市小吃</td><td>≈¥400/天</td><td>×5</td><td class="bt-amount">¥2,000</td></tr>
+    <tr><td>市内滴滴/地铁</td><td>≈¥80/天</td><td>×5</td><td class="bt-amount">¥400</td></tr>
+    <tr><td>沙滩玩具/零食/纪念品</td><td>—</td><td>—</td><td class="bt-amount">¥200</td></tr>
+    <tr class="bt-sub"><td colspan="3">🍽️🚕 小计</td><td class="bt-amount">¥2,600</td></tr>
+  </table></div>
 
   <div class="highlight-box" style="margin-top:12px">
     <h3>💰 总预算汇总</h3>
     <table style="width:100%;color:#fff;font-size:13px;border-collapse:collapse">
-      <tr style="border-bottom:1px solid rgba(255,255,255,0.15)"><td style="padding:6px 0">🚄 高铁往返</td><td style="text-align:right;font-weight:700">¥1,570</td></tr>
-      <tr style="border-bottom:1px solid rgba(255,255,255,0.15)"><td style="padding:6px 0">🏨 住宿 3 晚</td><td style="text-align:right;font-weight:700">¥1,500</td></tr>
-      <tr style="border-bottom:1px solid rgba(255,255,255,0.15)"><td style="padding:6px 0">🎫 门票玩乐</td><td style="text-align:right;font-weight:700">¥672</td></tr>
-      <tr style="border-bottom:1px solid rgba(255,255,255,0.15)"><td style="padding:6px 0">🍽️🚕 餐饮交通其他</td><td style="text-align:right;font-weight:700">¥1,920</td></tr>
-      <tr><td style="padding:10px 0;font-size:18px;font-weight:800">🎯 合计</td><td style="text-align:right;font-size:22px;font-weight:800">≈ ¥5,662</td></tr>
+      <tr style="border-bottom:1px solid rgba(255,255,255,0.15)"><td style="padding:6px 0">🚄 高铁往返</td><td style="text-align:right;font-weight:700">¥1,826</td></tr>
+      <tr style="border-bottom:1px solid rgba(255,255,255,0.15)"><td style="padding:6px 0">🏨 住宿 4 晚</td><td style="text-align:right;font-weight:700">¥1,900</td></tr>
+      <tr style="border-bottom:1px solid rgba(255,255,255,0.15)"><td style="padding:6px 0">🎫 门票玩乐</td><td style="text-align:right;font-weight:700">¥572</td></tr>
+      <tr style="border-bottom:1px solid rgba(255,255,255,0.15)"><td style="padding:6px 0">🍽️🚕 餐饮交通其他</td><td style="text-align:right;font-weight:700">¥2,600</td></tr>
+      <tr><td style="padding:10px 0;font-size:18px;font-weight:800">🎯 合计</td><td style="text-align:right;font-size:22px;font-weight:800">≈ ¥6,898</td></tr>
     </table>
-    <p style="font-size:10px;opacity:0.7;margin-top:6px">弹性空间 ±10%，实际控制在 ¥5,500 – ¥6,500 之间。住宿和餐饮浮动最大。</p>
+    <p style="font-size:10px;opacity:0.7;margin-top:6px">弹性 ±10%，实际控制在 ¥6,500-7,500。酒店和餐饮浮动最大。啤酒节吃喝丰俭由人。</p>
   </div>
 
 </div>
@@ -529,108 +489,100 @@ body {
 <div id="tab-tips" class="tab-content">
 
   <div class="tip-grid">
-
-    <div class="tip-card">
-      <h4>🧳 行李清单</h4>
+    <div class="tip-card"><h4>🧳 行李清单</h4>
       <ul class="checklist">
-        <li><span class="box"></span> 身份证（购票乘车）</li>
+        <li><span class="box"></span> 身份证（乘车用）</li>
         <li><span class="box"></span> 遮阳帽·太阳镜·防晒霜</li>
         <li><span class="box"></span> 泳衣·沙滩鞋·大浴巾×2</li>
         <li><span class="box"></span> 挖沙玩具套装🪣</li>
-        <li><span class="box"></span> 防水袋（手机用）</li>
-        <li><span class="box"></span> 备用衣物（孩子至少2套）</li>
-        <li><span class="box"></span> 儿童水壶·小零食</li>
+        <li><span class="box"></span> 防水袋（手机/证件）</li>
+        <li><span class="box"></span> 孩子备用衣物（至少2套）</li>
+        <li><span class="box"></span> 儿童水壶·高铁零食</li>
         <li><span class="box"></span> 充电宝·数据线</li>
         <li><span class="box"></span> 晕车药·创可贴·防蚊液</li>
+        <li><span class="box"></span> 折叠伞（8月偶有阵雨）</li>
       </ul>
     </div>
 
-    <div class="tip-card">
-      <h4>🚄 高铁购票</h4>
+    <div class="tip-card"><h4>🚇 地铁出行指南</h4>
       <ul class="checklist">
-        <li><span class="box"></span> 12306提前3-5天购票</li>
-        <li><span class="box"></span> 优先选<strong>青岛站</strong>（市中心）非青岛北/西</li>
-        <li><span class="box"></span> 往返票<strong>一起买</strong></li>
-        <li><span class="box"></span> 儿童票半价，需绑定成人</li>
-        <li><span class="box"></span> 备选：G210 17:45-21:30</li>
+        <li><span class="box"></span> <strong>3号线</strong>：青岛北→李村→五四广场→青岛站</li>
+        <li><span class="box"></span> <strong>2号线</strong>：五四广场→台东</li>
+        <li><span class="box"></span> <strong>1号线</strong>：青岛站↔西海岸（过海!）↔青岛北</li>
+        <li><span class="box"></span> <strong>6号线</strong>：西海岸区内线·青大附院站</li>
+        <li><span class="box"></span> 支付宝/微信搜"青岛地铁"扫码乘车</li>
+        <li><span class="box"></span> 打滴滴也很方便，市区¥10-25/程</li>
       </ul>
     </div>
 
-    <div class="tip-card">
-      <h4>🏨 住宿建议</h4>
-      <ul class="checklist">
-        <li><span class="box"></span> <strong>市南区</strong>优先（栈桥/五四广场）</li>
-        <li><span class="box"></span> 家庭房或大床+加床</li>
-        <li><span class="box"></span> 暑期提前订！8月是旺季</li>
-        <li><span class="box"></span> 预算 ¥400-600/晚</li>
-        <li><span class="box"></span> 推荐亚朵/全季/民宿公寓</li>
-      </ul>
-    </div>
-
-    <div class="tip-card">
-      <h4>🦐 青岛美食指南</h4>
-      <ul class="checklist">
-        <li><span class="box"></span> <strong>辣炒蛤蜊</strong>—— 青岛第一菜</li>
-        <li><span class="box"></span> <strong>鲅鱼水饺</strong>—— 孩子友好</li>
-        <li><span class="box"></span> <strong>原浆啤酒</strong>—— 大人专属🍺</li>
-        <li><span class="box"></span> 烤海蛎子·烤鱿鱼·野馄饨</li>
-        <li><span class="box"></span> 船歌鱼水饺（连锁，品质稳）</li>
-        <li><span class="box"></span> 台东夜市·劈柴院·闽江路</li>
-      </ul>
-    </div>
-
-    <div class="tip-card">
-      <h4>👦 带娃注意事项</h4>
+    <div class="tip-card"><h4>👦 带娃注意</h4>
       <ul class="checklist">
         <li><span class="box"></span> 海滩<strong>盯紧</strong>孩子，注意离岸流</li>
-        <li><span class="box"></span> 8月青岛晒，<strong>物理防晒</strong>为主</li>
-        <li><span class="box"></span> 海鲜<strong>适量</strong>，孩子肠胃敏感</li>
-        <li><span class="box"></span> 多带水，随时补水</li>
-        <li><span class="box"></span> 午间最热时安排室内/酒店休息</li>
-        <li><span class="box"></span> 沙滩回酒店<strong>必须冲澡</strong></li>
+        <li><span class="box"></span> 8月防晒！<strong>物理防晒</strong>为主</li>
+        <li><span class="box"></span> 海鲜适量，孩子肠胃敏感</li>
+        <li><span class="box"></span> 午间最热安排室内/酒店休息</li>
+        <li><span class="box"></span> 沙滩回酒店必须冲澡换衣</li>
+        <li><span class="box"></span> 极地海洋世界内凉快，带薄外套</li>
       </ul>
     </div>
 
-    <div class="tip-card">
-      <h4>📅 出行时间线</h4>
+    <div class="tip-card"><h4>🦐 美食打卡清单</h4>
       <ul class="checklist">
-        <li><span class="box"></span> <strong>7/28-7/31</strong> 买高铁票</li>
-        <li><span class="box"></span> <strong>7/28-7/31</strong> 订酒店</li>
-        <li><span class="box"></span> <strong>8/3</strong> 网上买极地海洋世界门票</li>
-        <li><span class="box"></span> <strong>8/4</strong> 收拾行李</li>
-        <li><span class="box"></span> <strong>8/5 17:09</strong> 出发！🎉</li>
+        <li><span class="box"></span> 🥇 <strong>辣炒蛤蜊</strong>——青岛第一菜</li>
+        <li><span class="box"></span> 🥈 <strong>鲅鱼水饺</strong>——孩子友好</li>
+        <li><span class="box"></span> 🥉 <strong>原浆啤酒</strong>——大人专属🍺</li>
+        <li><span class="box"></span> 烤海蛎子·烤鱿鱼·野馄饨</li>
+        <li><span class="box"></span> <strong>船歌鱼水饺</strong>（连锁品质稳）</li>
+        <li><span class="box"></span> 李村夜市·台东夜市·闽江路</li>
       </ul>
     </div>
 
+    <div class="tip-card"><h4>🍺 啤酒节攻略</h4>
+      <ul class="checklist">
+        <li><span class="box"></span> 🎫 <strong>免票入园</strong>，直接安检进</li>
+        <li><span class="box"></span> 🕙 10:00-24:00，傍晚去最佳</li>
+        <li><span class="box"></span> 🚌 有免费"微醺巴士"接驳</li>
+        <li><span class="box"></span> 🎆 无人机+焰火每晚都有</li>
+        <li><span class="box"></span> 📱 小程序"金沙滩啤酒城"查攻略</li>
+        <li><span class="box"></span> 👦 沙滩市集适合孩子逛</li>
+      </ul>
+    </div>
+
+    <div class="tip-card"><h4>⚠️ 重要时间节点</h4>
+      <ul class="checklist">
+        <li><span class="box"></span> <strong>Day1 17:56</strong> 北京南不误车</li>
+        <li><span class="box"></span> <strong>Day4 16:00</strong> 啤酒节入园</li>
+        <li><span class="box"></span> <strong>Day5 14:30前</strong> 西海岸出发</li>
+        <li><span class="box"></span> <strong>Day5 18:57</strong> G892 青岛北发车</li>
+        <li><span class="box"></span> 极地海洋世界：提前一天网上购票</li>
+        <li><span class="box"></span> 啤酒节 8/15 闭幕，我们在有效期内</li>
+      </ul>
+    </div>
   </div>
 
-  <!-- Weather -->
-  <div class="card" style="margin-top:12px">
-    <h3>🌤️ 8月初青岛天气</h3>
-    <table style="width:100%;font-size:12px;border-collapse:collapse">
-      <tr style="border-bottom:1px solid var(--border)"><td style="padding:5px 8px">气温</td><td style="padding:5px 8px">24°C – 30°C，体感舒适但有湿度</td></tr>
-      <tr style="border-bottom:1px solid var(--border)"><td style="padding:5px 8px">海水温度</td><td style="padding:5px 8px">约 24-26°C，适合下水</td></tr>
-      <tr style="border-bottom:1px solid var(--border)"><td style="padding:5px 8px">穿搭</td><td style="padding:5px 8px">短袖短裤 + 防晒衣 + 沙滩鞋/凉鞋 + 帽子</td></tr>
-      <tr><td style="padding:5px 8px">注意</td><td style="padding:5px 8px">8月偶有台风外围影响，出发前看预报。备一把折叠伞。</td></tr>
-    </table>
-  </div>
+  <!-- Weather + Transit -->
+  <div class="card" style="margin-top:12px"><h3>🌤️ 天气 & 穿什么</h3>
+  <table style="width:100%;font-size:12px;border-collapse:collapse">
+    <tr style="border-bottom:1px solid var(--border)"><td style="padding:5px 8px;font-weight:600">气温</td><td style="padding:5px 8px">24°C-30°C</td></tr>
+    <tr style="border-bottom:1px solid var(--border)"><td style="padding:5px 8px;font-weight:600">海水</td><td style="padding:5px 8px">约 24-26°C，适合下水</td></tr>
+    <tr style="border-bottom:1px solid var(--border)"><td style="padding:5px 8px;font-weight:600">穿搭</td><td style="padding:5px 8px">短袖短裤 + 防晒衣 + 沙滩鞋/凉鞋 + 帽子</td></tr>
+    <tr><td style="padding:5px 8px;font-weight:600">注意</td><td style="padding:5px 8px">8月偶有台风外围影响，出发前看天气预报</td></tr>
+  </table></div>
 
-  <!-- Emergency -->
-  <div class="card">
-    <h3>🆘 实用信息</h3>
-    <table style="width:100%;font-size:12px;border-collapse:collapse">
-      <tr style="border-bottom:1px solid var(--border)"><td style="padding:4px 8px;font-weight:600">青岛站</td><td style="padding:4px 8px">市南区泰安路2号 · 就在海边</td></tr>
-      <tr style="border-bottom:1px solid var(--border)"><td style="padding:4px 8px;font-weight:600">极地海洋世界</td><td style="padding:4px 8px">崂山区东海东路60号 · 9:00-17:00</td></tr>
-      <tr style="border-bottom:1px solid var(--border)"><td style="padding:4px 8px;font-weight:600">出租车起步价</td><td style="padding:4px 8px">¥10/3km，市区景点间一般 ¥10-25</td></tr>
-      <tr><td style="padding:4px 8px;font-weight:600">滴滴</td><td style="padding:4px 8px">方便快捷，市区叫车基本秒接</td></tr>
-    </table>
-  </div>
+  <div class="card"><h3>📞 实用信息</h3>
+  <table style="width:100%;font-size:12px;border-collapse:collapse">
+    <tr style="border-bottom:1px solid var(--border)"><td style="padding:4px 8px;font-weight:600">青岛北站</td><td style="padding:4px 8px">李沧区 · 地铁3号线/1号线/8号线</td></tr>
+    <tr style="border-bottom:1px solid var(--border)"><td style="padding:4px 8px;font-weight:600">极地海洋世界</td><td style="padding:4px 8px">崂山区东海东路60号 · 9:00-17:00</td></tr>
+    <tr style="border-bottom:1px solid var(--border)"><td style="padding:4px 8px;font-weight:600">金沙滩啤酒城</td><td style="padding:4px 8px">西海岸新区金沙滩路 · 10:00-24:00</td></tr>
+    <tr style="border-bottom:1px solid var(--border)"><td style="padding:4px 8px;font-weight:600">出租车起步价</td><td style="padding:4px 8px">¥10/3km，市区景点间一般¥10-25</td></tr>
+    <tr><td style="padding:4px 8px;font-weight:600">滴滴</td><td style="padding:4px 8px">市区秒接，西海岸也方便</td></tr>
+  </table></div>
 
 </div>
 
 <!-- ═══════════ FOOTER ═══════════ -->
 <div class="footer">
-  🌊 青岛亲子游 · 8月5-8日 · 两大一小 · <span id="update-time"></span>
+  🌊🍺 青岛5天4晚亲子游 · 8/5-8/9 · G73/G892 · <span id="update-time"></span>
 </div>
 
 </div>
@@ -639,7 +591,7 @@ body {
 function switchTab(name) {
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-  document.querySelector('.tab[onclick="switchTab(\'' + name + '\')"]').classList.add('active');
+  document.querySelector('.tab[onclick="switchTab(\'" + name + "\')"]').classList.add('active');
   document.getElementById('tab-' + name).classList.add('active');
   window.location.hash = name;
 }
@@ -647,10 +599,10 @@ window.addEventListener('hashchange', function(){
   var h = window.location.hash.replace('#','');
   if (['overview','daily','budget','tips'].indexOf(h) !== -1) switchTab(h);
 });
-if (['overview','daily','budget','tips'].indexOf(window.location.hash.replace('#',''))!==-1) {
+if (['overview','daily','budget','tips'].indexOf(window.location.hash.replace('#','')) !== -1) {
   switchTab(window.location.hash.replace('#',''));
 }
-document.getElementById('update-time').textContent = '更新：2026-07-31';
+document.getElementById('update-time').textContent = '更新：2026-08-03 · 已确认高铁+酒店';
 </script>
 
 </body>
